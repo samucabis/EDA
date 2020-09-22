@@ -2,13 +2,16 @@
 #define TREE_H
 
 #include "node.h"
+#include <string>
+
+using namespace std;
 
 template <typename Tchave>
 class tree
 {
 private:
     
-    node *raiz;
+    node<Tchave> *raiz;
 
 public:
 
@@ -19,18 +22,18 @@ public:
     void pre_ordem();
     void em_ordem();
     void pos_ordem();
-    void inserir(Tchave chave, pessoa p);
+    void inserir(Tchave chave, string p);
     void remover(Tchave chave);
     void remover_tudo();
-    node* min();
-    node* max();
+    node<Tchave>* min();
+    node<Tchave>* max();
     void pesquisar(Tchave chave);
 
 };
 
 //iniciando a arvore como vazia
 template <typename Tchave>
-tree<typename Tchave>::tree() {
+tree<Tchave>::tree() {
     cout << "Criando..."              << endl;
     cout << "Aperte enter para prosseguir..." << endl;
     getchar();
@@ -39,7 +42,7 @@ tree<typename Tchave>::tree() {
 }
 //destruindo a arvore
 template <typename Tchave>
-tree<typename Tchave>::~tree() {
+tree<Tchave>::~tree() {
     cout << "Deletando..." << endl;
     if(raiz != nullptr) {
         raiz->desalocarMemoria();
@@ -51,7 +54,7 @@ tree<typename Tchave>::~tree() {
 }
 //retorna a quantidade de folhas
 template <typename Tchave>
-int tree<typename Tchave>::numeroFolhas() {
+int tree<Tchave>::numeroFolhas() {
     if(raiz == nullptr) {
         return 0;
     }
@@ -59,7 +62,7 @@ int tree<typename Tchave>::numeroFolhas() {
 }
 //retorna a altura da arvore
 template <typename Tchave>
-int tree<typename Tchave>::altura() {
+int tree<Tchave>::altura() {
     if(raiz == nullptr) {
         return 0;
     }
@@ -67,7 +70,7 @@ int tree<typename Tchave>::altura() {
 }
 //função pre ordem
 template <typename Tchave>
-void tree<typename Tchave>::pre_ordem() {
+void tree<Tchave>::pre_ordem() {
     if(raiz == nullptr) {
         cout << "Arvore vazia.";
     } else {
@@ -77,7 +80,7 @@ void tree<typename Tchave>::pre_ordem() {
 }
 //função em ordem
 template <typename Tchave>
-void tree<typename Tchave>::em_ordem() {
+void tree<Tchave>::em_ordem() {
     if(raiz == nullptr) {
         cout << "Arvore vazia.";
     } else {
@@ -87,7 +90,7 @@ void tree<typename Tchave>::em_ordem() {
 }
 //função pos ordem
 template <typename Tchave>
-void tree<typename Tchave>::pos_ordem() {
+void tree<Tchave>::pos_ordem() {
     if(raiz == nullptr) {
         cout << "Arvore vazia.";
     } else {
@@ -97,7 +100,7 @@ void tree<typename Tchave>::pos_ordem() {
 }
 //retorna valor minimo da arvore
 template <typename Tchave>
-node<typename Tchave>* min() {
+node<Tchave>* tree<Tchave>::min() {
     if(raiz == nullptr) {
         return nullptr;
     }
@@ -105,7 +108,7 @@ node<typename Tchave>* min() {
 }
 //retorna valor max da arvore
 template <typename Tchave>
-node< typename Tchave >* max() {
+node<Tchave>* tree<Tchave>::max() {
     if(raiz == nullptr) {
         return nullptr;
     }
@@ -113,10 +116,10 @@ node< typename Tchave >* max() {
 }
 //função inserir na arvore
 template <typename Tchave>
-void tree<typename Tchave>::inserir(Tchave chave, pessoa p) {
+void tree<Tchave>::inserir(Tchave chave, string p) {
     if(raiz == nullptr) {
         //cria novo nó com os valores recebidos, caso seja a primeira inserção
-        raiz = new node(chave, p);
+        raiz = new node<Tchave>(chave, p);
     } else {
         //chamada da função para inserir novos valores
         raiz = raiz->insert(chave, p);
@@ -124,27 +127,27 @@ void tree<typename Tchave>::inserir(Tchave chave, pessoa p) {
 }
 //chamada da função remove
 template <typename Tchave>
-void tree<typename Tchave>::remover(Tchave chave) {
+void tree<Tchave>::remover(Tchave chave) {
     if(raiz != nullptr) {
         raiz = raiz->remove(chave);
     }
 }
 //chamada da fução remove que limpa a arvore
 template <typename Tchave>
-void tree<typename Tchave>::remover_tudo(){
+void tree<Tchave>::remover_tudo(){
     if(raiz != nullptr) {
         raiz = raiz->remove_all(raiz);
     }
 }
 //a partir de uma chave, essa funçao retorna o valor do nó
 template <typename Tchave>
-void tree<typename Tchave>::pesquisar(Tchave chave){
+void tree<Tchave>::pesquisar(Tchave chave){
     if(raiz == nullptr){
         cout << "Arvore vazia..."<<endl;
     }else{
-        node* x = raiz->search(raiz, chave);
+        node<Tchave>* x = raiz->search(raiz, chave);
         if(x != nullptr){
-            cout << x->getValor()<<endl;
+            cout << x->getPessoa()<<endl;
 
         }else{
             cout << "Valor não existe na arvore..."<<endl;

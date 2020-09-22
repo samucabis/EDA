@@ -38,25 +38,24 @@ int menu() {
 }
 //switch case do menu principal
 template <typename Tchave>
-void init(int op, tree<typename Tchave> *t, bool *b) {
+void init(int op, tree<Tchave> *t, bool *b) {
     system("clear");
     switch(op)
     {
     case 1:
     {
-        Tkey novaChave;
-        Tvalue novoValor;
+        Tchave novaChave;
         cout << "Entre com a chave a ser inserido: ";
         cin >> novaChave;
-        cout << "Entre com o novo valor a ser inserido: ";
-        cin >> novoValor;
-        t->inserir(novaChave, novoValor);
+        //pessoa p = new pessoa("cpf","nome","sobrenome","data","cidade");
+        string p = "teste progam";
+        t->inserir(novaChave, p);
         limpaTela();
         break;
     }
     case 2:
     {
-        Tkey deleteChave;
+        Tchave deleteChave;
         cout << "Entre com a chave que deseja deletar: ";
         cin >> deleteChave;
         t->remover(deleteChave);
@@ -97,8 +96,8 @@ void init(int op, tree<typename Tchave> *t, bool *b) {
     }
     case 8:
     {
-        node *max = t->max();
-        node *min = t->min();
+        node<Tchave> *max = t->max();
+        node<Tchave> *min = t->min();
         if(max == nullptr || min == nullptr) {
             cout << "Valores maximo e minimo nao existem..." << endl;
         } else {
@@ -117,7 +116,7 @@ void init(int op, tree<typename Tchave> *t, bool *b) {
     }
     case 10:
     {
-        Tkey chave;
+        Tchave chave;
         cout << "Digite uma Chave..."<< endl;
         cin >> chave;
         t->pesquisar(chave);
@@ -139,9 +138,8 @@ void init(int op, tree<typename Tchave> *t, bool *b) {
     }
 }
 
-template <typename Tchave>
 int main() {
-    tree<typename Tchave> *t = new tree();
+    tree<string> *t = new tree<string>();
     bool continua = true;
 
     while(continua) {

@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "xstring": "cpp",
+        "cctype": "cpp",
+        "cstdio": "cpp",
+        "list": "cpp",
+        "type_traits": "cpp",
+        "unordered_map": "cpp",
+        "xhash": "cpp",
+        "xmemory": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp"
+    }
+}

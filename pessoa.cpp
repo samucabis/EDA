@@ -7,3 +7,5 @@ pessoa::pessoa(string cpf, string nome, string snome, string nasc, string cidade
     this->nasc     = nasc;
     this->cidade  = cidade;
 }
+pessoa::pessoa() {
+}

@@ -7,44 +7,44 @@
 template <typename Tchave> 
 class node {
 public:
-    explicit node(Tchave, pessoa p);
+    explicit node(Tchave, string p);
     node *esq;
     node *dir;
     Tchave getChave();
-	pessoa getPessoa();
-    //int numeroFolhas();
+	string getPessoa();
+    int numeroFolhas();
     int getAltura();
     int getBalanco();
-    //void preorder();
-    //void inorder();
-    //void postorder();
+    void preorder();
+    void inorder();
+    void postorder();
     void desalocarMemoria();
     node* rotacao_dir(node *x);
     node* rotacao_esq(node *x);
-    node* insert(Tchave chave, pessoa p);
-    //node* remove(Tkey chave);
+    node* insert(Tchave chave, string p);
+    node* remove(Tchave chave);
     node* remove_all(node *x);
-    //node* minValueNode(node *x);
+    node* minValueNode(node *x);
     node* min();
     node* max();
     node* search(node *x, Tchave chave);
 private:
     Tchave chave;
-    pessoa pssoa;
+    string pssoa;
     int altura;
 
 };
 
 template <typename Tchave>
-node< typename Tchave >::node(Tchave chave, pessoa p) 
+node<Tchave>::node(Tchave chave, string p) 
 {
-    this->Tchave = chave;
+    this->chave = chave;
     this->pssoa = p;
     this->altura = 1;
     
 }
 template <typename Tchave>
-void node<typename Tchave>::desalocarMemoria(){
+void node<Tchave>::desalocarMemoria(){
     node *currentNode = this;
     if(currentNode != nullptr) {
         currentNode->esq->desalocarMemoria();
@@ -55,7 +55,7 @@ void node<typename Tchave>::desalocarMemoria(){
 
 //maximo valor da chave da arvore
 template <typename Tchave>
-node<typename Tchave>* node<typename Tchave>::max() {
+node<Tchave>* node<Tchave>::max() {
     node *currentNode = this;
 
     if(currentNode == nullptr) {
@@ -69,7 +69,7 @@ node<typename Tchave>* node<typename Tchave>::max() {
 }
 //menor chave da arvore
 template <typename Tchave>
-node<typename Tchave>* node<typename Tchave>::min() {
+node<Tchave>* node<Tchave>::min() {
     node *currentNode = this;
 
     if(currentNode == nullptr) {
@@ -85,15 +85,15 @@ node<typename Tchave>* node<typename Tchave>::min() {
 
 
 template <typename Tchave>
-Tchave node< typename Tchave >::getChave() {
+Tchave node<Tchave >::getChave() {
     return this->chave;
 }
 template <typename Tchave>
-pessoa node< typename Tchave >::getPessoa() {
-    return this->valor;
+string node<Tchave >::getPessoa() {
+    return this->pssoa;
 }
 template <typename Tchave>
-int node<typename Tchave>::getAltura() {
+int node<Tchave>::getAltura() {
     node *currentNode = this;
     if(currentNode == nullptr) {
         return 0;
@@ -101,7 +101,7 @@ int node<typename Tchave>::getAltura() {
     return currentNode->altura;
 }
 template <typename Tchave>
-int node<typename Tchave>::getBalanco() {
+int node<Tchave>::getBalanco() {
     node *currentNode = this;
     if(currentNode == nullptr) {
         return 0;
@@ -111,7 +111,7 @@ int node<typename Tchave>::getBalanco() {
 }
 
 template<typename Tchave>
-node<typename Tchave>* node<typename Tchave>::rotacao_dir(node *y) {
+node<Tchave>* node<Tchave>::rotacao_dir(node *y) {
     node *x = y->esq;
     node *T2 = x->dir;
 
@@ -125,7 +125,7 @@ node<typename Tchave>* node<typename Tchave>::rotacao_dir(node *y) {
 }
 
 template<typename Tchave>
-node<typename Tchave>* node<typename Tchave>::rotacao_esq(node *x) {
+node<Tchave>* node<Tchave>::rotacao_esq(node *x) {
     node *y = x->dir;
     node *T2 = y->esq;
 
@@ -141,7 +141,7 @@ node<typename Tchave>* node<typename Tchave>::rotacao_esq(node *x) {
 
 
 template <typename Tchave>
-node<typename Tchave>* node<typename Tchave>::insert(Tchave chave, pessoa p)  {
+node<Tchave>* node<Tchave>::insert(Tchave chave, string p)  {
     //verifica se o no atual é vazio
     node *currentNode = this;
     if(currentNode == nullptr) {
@@ -190,7 +190,7 @@ node<typename Tchave>* node<typename Tchave>::insert(Tchave chave, pessoa p)  {
 }
 
 template <typename Tchave>
-node<typename Tchave>* node<typename Tchave>::search(node *x, Tchave chave)
+node<Tchave>* node<Tchave>::search(node *x, Tchave chave)
 {
     if (x == nullptr)
         return nullptr;

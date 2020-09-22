@@ -13,7 +13,8 @@ public:
     string nome;
     string snome;
     string cidade;
-    pessoa(string cpf, string nome, string snome, string nasc, string cidade);  
+    pessoa(string cpf, string nome, string snome, string nasc, string cidade);
+    pessoa();  
 
 };
 
