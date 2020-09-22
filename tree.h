@@ -26,12 +26,7 @@ public:
 
 };
 
-#endif // TREE_H
-//teste do git222
-// NOME: JOSE GABRIEL BERNARDES DE ALMEIDA
-// MATRICULA: 403958
-
-
+#endif 
 
 
 
