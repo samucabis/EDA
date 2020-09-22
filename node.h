@@ -1,6 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
 #include "pessoa.h"
+#include <iostream>
 
 
 // ########################################### NODE #####################################################
@@ -12,19 +13,19 @@ public:
     node *dir;
     Tchave getChave();
 	string getPessoa();
-    int numeroFolhas();
+    //int numeroFolhas();
     int getAltura();
     int getBalanco();
-    void preorder();
-    void inorder();
-    void postorder();
+    //void preorder();
+   // void inorder();
+    //void postorder();
     void desalocarMemoria();
     node* rotacao_dir(node *x);
     node* rotacao_esq(node *x);
     node* insert(Tchave chave, string p);
-    node* remove(Tchave chave);
-    node* remove_all(node *x);
-    node* minValueNode(node *x);
+    //node* remove(Tchave chave);
+    //node* remove_all(node *x);
+    //node* minValueNode(node *x);
     node* min();
     node* max();
     node* search(node *x, Tchave chave);

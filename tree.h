@@ -3,6 +3,7 @@
 
 #include "node.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -18,13 +19,13 @@ public:
     tree();
     ~tree();
     int altura();
-    int numeroFolhas();
-    void pre_ordem();
-    void em_ordem();
-    void pos_ordem();
+    //int numeroFolhas();
+    //void pre_ordem();
+   // void em_ordem();
+    //void pos_ordem();
     void inserir(Tchave chave, string p);
-    void remover(Tchave chave);
-    void remover_tudo();
+    //void remover(Tchave chave);
+    //void remover_tudo();
     node<Tchave>* min();
     node<Tchave>* max();
     void pesquisar(Tchave chave);
@@ -52,6 +53,7 @@ tree<Tchave>::~tree() {
     getchar();
     system("clear");
 }
+/*
 //retorna a quantidade de folhas
 template <typename Tchave>
 int tree<Tchave>::numeroFolhas() {
@@ -59,7 +61,7 @@ int tree<Tchave>::numeroFolhas() {
         return 0;
     }
     return raiz->numeroFolhas();
-}
+}*/
 //retorna a altura da arvore
 template <typename Tchave>
 int tree<Tchave>::altura() {
@@ -68,6 +70,7 @@ int tree<Tchave>::altura() {
     }
     return raiz->getAltura();
 }
+/*
 //função pre ordem
 template <typename Tchave>
 void tree<Tchave>::pre_ordem() {
@@ -97,7 +100,7 @@ void tree<Tchave>::pos_ordem() {
         raiz->postorder();
     }
     cout << endl;
-}
+}*/
 //retorna valor minimo da arvore
 template <typename Tchave>
 node<Tchave>* tree<Tchave>::min() {
@@ -125,20 +128,20 @@ void tree<Tchave>::inserir(Tchave chave, string p) {
         raiz = raiz->insert(chave, p);
     }
 }
-//chamada da função remove
+/*//chamada da função remove
 template <typename Tchave>
 void tree<Tchave>::remover(Tchave chave) {
     if(raiz != nullptr) {
         raiz = raiz->remove(chave);
     }
-}
+}*/
 //chamada da fução remove que limpa a arvore
-template <typename Tchave>
+/*template <typename Tchave>
 void tree<Tchave>::remover_tudo(){
     if(raiz != nullptr) {
         raiz = raiz->remove_all(raiz);
     }
-}
+}*/
 //a partir de uma chave, essa funçao retorna o valor do nó
 template <typename Tchave>
 void tree<Tchave>::pesquisar(Tchave chave){

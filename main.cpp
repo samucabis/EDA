@@ -58,25 +58,25 @@ void init(int op, tree<Tchave> *t, bool *b) {
         Tchave deleteChave;
         cout << "Entre com a chave que deseja deletar: ";
         cin >> deleteChave;
-        t->remover(deleteChave);
+        //t->remover(deleteChave);
         limpaTela();
         break;
     }
     case 3:
     {
-        t->pre_ordem();
+       // t->pre_ordem();
         limpaTela();
         break;
     }
     case 4:
     {
-        t->em_ordem();
+        //t->em_ordem();
         limpaTela();
         break;
     }
     case 5:
     {
-        t->pos_ordem();
+        //t->pos_ordem();
         limpaTela();
         break;
     }
@@ -89,8 +89,8 @@ void init(int op, tree<Tchave> *t, bool *b) {
     }
     case 7:
     {
-        int numFolhas = t->numeroFolhas();
-        cout << "Numero de folhas da arvore: " << numFolhas << endl;
+        //int numFolhas = t->numeroFolhas();
+        //cout << "Numero de folhas da arvore: " << numFolhas << endl;
         limpaTela();
         break;
     }
@@ -110,7 +110,7 @@ void init(int op, tree<Tchave> *t, bool *b) {
     case 9:
     {
         cout << "Apagando a arvore"<< endl;
-        t->remover_tudo();
+        //t->remover_tudo();
         limpaTela();
         break;
     }
