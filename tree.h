@@ -27,7 +27,7 @@ public:
 };
 
 #endif // TREE_H
-
+//teste do git
 // NOME: JOSE GABRIEL BERNARDES DE ALMEIDA
 // MATRICULA: 403958
 
@@ -40,8 +40,6 @@ public:
 
 
 
-
-#endif
 /*
 #include "node.h"
 
