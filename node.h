@@ -2,6 +2,8 @@
 #define NODE_H
 #include "pessoa.h"
 
+
+// ########################################### NODE #####################################################
 template <typename Tchave> 
 class node {
 public:
@@ -10,12 +12,12 @@ public:
     node *dir;
     Tchave getChave();
 	pessoa getPessoa();
-    int numeroFolhas();
+    //int numeroFolhas();
     int getAltura();
     int getBalanco();
-    void preorder();
-    void inorder();
-    void postorder();
+    //void preorder();
+    //void inorder();
+    //void postorder();
     void desalocarMemoria();
     node* rotacao_dir(node *x);
     node* rotacao_esq(node *x);
@@ -199,4 +201,10 @@ node<typename Tchave>* node<typename Tchave>::search(node *x, Tchave chave)
     else
         return x;
 }
+
+// ########################################################################### END NODE #########################################
+
+
+
+
 #endif

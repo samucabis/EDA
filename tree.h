@@ -3,9 +3,11 @@
 
 #include "node.h"
 
+template <typename Tchave>
 class tree
 {
 private:
+    
     node *raiz;
 
 public:
