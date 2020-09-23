@@ -10,6 +10,8 @@
         "xhash": "cpp",
         "xmemory": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "ostream": "cpp",
+        "utility": "cpp"
     }
 }

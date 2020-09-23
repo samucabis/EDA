@@ -1,14 +1,15 @@
 #ifndef NODE_H
 #define NODE_H
-#include "pessoa.h"
+//#include "Pessoa.h"
 #include <iostream>
 
+using namespace std;
 
 // ########################################### NODE #####################################################
 template <typename Tchave> 
 class node {
 public:
-    explicit node(Tchave, string p);
+    explicit node(Tchave chave, string p);
     node *esq;
     node *dir;
     Tchave getChave();
@@ -17,7 +18,7 @@ public:
     int getAltura();
     int getBalanco();
     //void preorder();
-   // void inorder();
+    //void inorder();
     //void postorder();
     void desalocarMemoria();
     node* rotacao_dir(node *x);
@@ -31,7 +32,7 @@ public:
     node* search(node *x, Tchave chave);
 private:
     Tchave chave;
-    string pssoa;
+    
     int altura;
 
 };
@@ -150,7 +151,7 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, string p)  {
         return new node(chave, p);
     }
     // se a chave for igual, retorna null
-    if(currentNode->chave == chave) {
+    if(currentNode->chave.first == chave) {
         return nullptr;
     }
     //verifica se a chave e menor pra inserir no lado esquerdo

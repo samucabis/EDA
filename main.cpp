@@ -1,11 +1,29 @@
-// NOME: JOSE GABRIEL BERNARDES DE ALMEIDA
-// MATRICULA: 403958
-
 #include <iostream>
 #include <cstdlib>
+#include "Pessoa.h"
 #include "tree.h"
+#include <utility> 
+#include <list>
 
 using namespace std;
+
+class Pessoa{
+    public:
+    string nome;
+    string cpf;
+    Pessoa(string nome, string cpf);
+    void printPessoa();
+};
+
+Pessoa::Pessoa(string nome, string cpf){
+    this->nome = nome;
+    this->cpf = cpf;
+}
+void Pessoa::printPessoa(){
+    cout << this->nome << " - " << this->cpf << endl;
+}
+
+
 
 void limpaTela() {
     cout << "Tecle para proseguir..." << endl;
@@ -44,13 +62,14 @@ void init(int op, tree<Tchave> *t, bool *b) {
     {
     case 1:
     {
-        Tchave novaChave;
-        cout << "Entre com a chave a ser inserido: ";
-        cin >> novaChave;
-        //pessoa p = new pessoa("cpf","nome","sobrenome","data","cidade");
-        string p = "teste progam";
-        t->inserir(novaChave, p);
-        limpaTela();
+        //Tchave novaChave;
+        //cout << "Entre com a chave a ser inserido: ";
+        //cin >> novaChave;
+        //Pessoa* p = new Pessoa("nome","cpf");
+        //p->printPessoa();
+        //string p = "teste progam";
+        //t->inserir(novaChave, p);
+        //limpaTela();
         break;
     }
     case 2:
@@ -139,7 +158,7 @@ void init(int op, tree<Tchave> *t, bool *b) {
 }
 
 int main() {
-    tree<string> *t = new tree<string>();
+    tree<pair <string, string>> *t = new tree<pair <string, string>>();
     bool continua = true;
 
     while(continua) {

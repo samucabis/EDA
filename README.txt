@@ -14,5 +14,6 @@ Compilando e executando:
 - • Consultar todas as pessoas cuja data de nascimento esteja em um intervalo
 estabelecido pelo usu´ario 
 
+criar uma lista encadeada de pessoas e um ponteiro na arvore apontando para a pessoa na lista
 
 
