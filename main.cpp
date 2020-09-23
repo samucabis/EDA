@@ -50,7 +50,7 @@ void init(int op, tree<Tchave> *t, bool *b) {
         pessoa *p = new pessoa("cpf","nome","sobrenome","data","cidade");
         p->printPessoa();
         //string p = "teste progam";
-        t->inserir(novaChave, &p);
+        t->inserir(novaChave, p);
         limpaTela();
         break;
     }

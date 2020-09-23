@@ -8,11 +8,11 @@
 template <typename Tchave> 
 class node {
 public:
-    explicit node(Tchave, string p);
+    explicit node(Tchave, pessoa *p);
     node *esq;
     node *dir;
     Tchave getChave();
-	pessoa getPessoa();
+	string getPessoa();
     //int numeroFolhas();
     int getAltura();
     int getBalanco();
@@ -31,13 +31,13 @@ public:
     node* search(node *x, Tchave chave);
 private:
     Tchave chave;
-    pessoa pssoa;
+    pessoa *pssoa;
     int altura;
 
 };
 
 template <typename Tchave>
-node<Tchave>::node(Tchave chave, string p) 
+node<Tchave>::node(Tchave chave, pessoa *p) 
 {
     this->chave = chave;
     this->pssoa = p;
@@ -90,8 +90,9 @@ Tchave node<Tchave >::getChave() {
     return this->chave;
 }
 template <typename Tchave>
-pessoa node<Tchave >::getPessoa() {
-    return this->pssoa;
+string node<Tchave >::getPessoa() {
+    //return this->*pssoa;
+    return "teste";
 }
 template <typename Tchave>
 int node<Tchave>::getAltura() {
@@ -147,18 +148,22 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa *p)  {
     node *currentNode = this;
     if(currentNode == nullptr) {
         //retorna novo no
+        cout << "inserir vazio " << endl;
         return new node(chave, p);
     }
     // se a chave for igual, retorna null
     if(currentNode->chave == chave) {
+        cout << "inserir chave igual " << endl;
         return nullptr;
     }
     //verifica se a chave e menor pra inserir no lado esquerdo
-    else if(chave < currentNode->chave) {
+    else if(stoi(chave) < stoi(currentNode->chave)) {
+        cout << "inserir chave menor " << endl;
         currentNode->esq = currentNode->esq->insert(chave, p);
     }
     //caso contrario chama a função pro lado direito
     else {
+        cout << "inserir chave maior " << endl;
         currentNode->dir = currentNode->dir->insert(chave, p);
     }
 
