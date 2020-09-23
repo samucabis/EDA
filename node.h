@@ -91,8 +91,10 @@ Tchave node<Tchave >::getChave() {
 }
 template <typename Tchave>
 string node<Tchave >::getPessoa() {
-    //return this->*pssoa;
-    return "teste";
+    string nome = this->pssoa->nome;
+    return nome;
+
+
 }
 template <typename Tchave>
 int node<Tchave>::getAltura() {

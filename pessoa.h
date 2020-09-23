@@ -13,7 +13,6 @@ class pessoa
         pessoa();
         ~pessoa();
         void printPessoa();
-    private:
         string cpf;
         string nasc;
         string nome;
