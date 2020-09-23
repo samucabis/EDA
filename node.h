@@ -1,15 +1,14 @@
 #ifndef NODE_H
 #define NODE_H
-//#include "Pessoa.h"
+#include "pessoa.h"
 #include <iostream>
 
-using namespace std;
 
 // ########################################### NODE #####################################################
 template <typename Tchave> 
 class node {
 public:
-    explicit node(Tchave chave, string p);
+    explicit node(Tchave, string p);
     node *esq;
     node *dir;
     Tchave getChave();
@@ -18,7 +17,7 @@ public:
     int getAltura();
     int getBalanco();
     //void preorder();
-    //void inorder();
+   // void inorder();
     //void postorder();
     void desalocarMemoria();
     node* rotacao_dir(node *x);
@@ -32,7 +31,7 @@ public:
     node* search(node *x, Tchave chave);
 private:
     Tchave chave;
-    
+    string pssoa;
     int altura;
 
 };
@@ -54,7 +53,7 @@ void node<Tchave>::desalocarMemoria(){
         delete currentNode;
     }
 }
-//ss
+
 //maximo valor da chave da arvore
 template <typename Tchave>
 node<Tchave>* node<Tchave>::max() {
@@ -151,7 +150,7 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, string p)  {
         return new node(chave, p);
     }
     // se a chave for igual, retorna null
-    if(currentNode->chave.first == chave) {
+    if(currentNode->chave == chave) {
         return nullptr;
     }
     //verifica se a chave e menor pra inserir no lado esquerdo
