@@ -21,7 +21,7 @@ public:
     int altura();
     //int numeroFolhas();
     //void pre_ordem();
-    //void em_ordem();
+   // void em_ordem();
     //void pos_ordem();
     void inserir(Tchave chave, string p);
     //void remover(Tchave chave);
@@ -124,7 +124,7 @@ void tree<Tchave>::inserir(Tchave chave, string p) {
         //cria novo nó com os valores recebidos, caso seja a primeira inserção
         raiz = new node<Tchave>(chave, p);
     } else {
-        //chamada da função para inserir novos valoress
+        //chamada da função para inserir novos valores
         raiz = raiz->insert(chave, p);
     }
 }

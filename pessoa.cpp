@@ -1,12 +1,11 @@
-#include "Pessoa.h"
+#include "pessoa.h"
 
-#include <iostream>
-#include <cstdlib>
-
-Pessoa::Pessoa(string nome, string cpf){
-    this->nome = nome;
-    this->cpf = cpf;
+pessoa::pessoa(string cpf, string nome, string snome, string nasc, string cidade) {
+    this->cpf   = cpf;
+	this->nome   = nome;
+    this->snome     = snome;
+    this->nasc     = nasc;
+    this->cidade  = cidade;
 }
-void Pessoa::printPessoa(){
-    cout << this->nome << " - " << this->cpf << endl;
+pessoa::pessoa() {
 }
