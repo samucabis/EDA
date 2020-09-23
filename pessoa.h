@@ -19,8 +19,6 @@ class pessoa
         string nome;
         string snome;
         string cidade; 
-
-
 };
 
 #endif

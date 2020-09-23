@@ -12,7 +12,7 @@ public:
     node *esq;
     node *dir;
     Tchave getChave();
-	string getPessoa();
+	pessoa getPessoa();
     //int numeroFolhas();
     int getAltura();
     int getBalanco();
@@ -22,7 +22,7 @@ public:
     void desalocarMemoria();
     node* rotacao_dir(node *x);
     node* rotacao_esq(node *x);
-    node* insert(Tchave chave, string p);
+    node* insert(Tchave chave, pessoa *p);
     //node* remove(Tchave chave);
     //node* remove_all(node *x);
     //node* minValueNode(node *x);
@@ -31,7 +31,7 @@ public:
     node* search(node *x, Tchave chave);
 private:
     Tchave chave;
-    string pssoa;
+    pessoa pssoa;
     int altura;
 
 };
@@ -90,7 +90,7 @@ Tchave node<Tchave >::getChave() {
     return this->chave;
 }
 template <typename Tchave>
-string node<Tchave >::getPessoa() {
+pessoa node<Tchave >::getPessoa() {
     return this->pssoa;
 }
 template <typename Tchave>
@@ -142,7 +142,7 @@ node<Tchave>* node<Tchave>::rotacao_esq(node *x) {
 
 
 template <typename Tchave>
-node<Tchave>* node<Tchave>::insert(Tchave chave, string p)  {
+node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa *p)  {
     //verifica se o no atual é vazio
     node *currentNode = this;
     if(currentNode == nullptr) {
@@ -154,7 +154,7 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, string p)  {
         return nullptr;
     }
     //verifica se a chave e menor pra inserir no lado esquerdo
-    else if(stoi(chave) < stoi(currentNode->chave)) {
+    else if(chave < currentNode->chave) {
         currentNode->esq = currentNode->esq->insert(chave, p);
     }
     //caso contrario chama a função pro lado direito
@@ -195,9 +195,9 @@ node<Tchave>* node<Tchave>::search(node *x, Tchave chave)
 {
     if (x == nullptr)
         return nullptr;
-    if (stoi(chave) < stoi(x->chave))
+    if (chave < x->chave)
         return search(x->esq, chave);
-    else if (stoi(chave) > stoi(x->chave))
+    else if (chave > x->chave)
         return search(x->dir, chave);
     else
         return x;

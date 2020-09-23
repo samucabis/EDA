@@ -23,7 +23,7 @@ public:
     //void pre_ordem();
    // void em_ordem();
     //void pos_ordem();
-    void inserir(Tchave chave, string p);
+    void inserir(Tchave chave, pessoa *p);
     //void remover(Tchave chave);
     //void remover_tudo();
     node<Tchave>* min();
@@ -53,15 +53,6 @@ tree<Tchave>::~tree() {
     getchar();
     system("clear");
 }
-/*
-//retorna a quantidade de folhas
-template <typename Tchave>
-int tree<Tchave>::numeroFolhas() {
-    if(raiz == nullptr) {
-        return 0;
-    }
-    return raiz->numeroFolhas();
-}*/
 //retorna a altura da arvore
 template <typename Tchave>
 int tree<Tchave>::altura() {
@@ -70,37 +61,6 @@ int tree<Tchave>::altura() {
     }
     return raiz->getAltura();
 }
-/*
-//função pre ordemss
-template <typename Tchave>
-void tree<Tchave>::pre_ordem() {
-    if(raiz == nullptr) {
-        cout << "Arvore vazia.";
-    } else {
-        raiz->preorder();
-    }
-    cout << endl;
-}
-//função em ordem
-template <typename Tchave>
-void tree<Tchave>::em_ordem() {
-    if(raiz == nullptr) {
-        cout << "Arvore vazia.";
-    } else {
-        raiz->inorder();
-    }
-    cout << endl;
-}
-//função pos ordem
-template <typename Tchave>
-void tree<Tchave>::pos_ordem() {
-    if(raiz == nullptr) {
-        cout << "Arvore vazia.";
-    } else {
-        raiz->postorder();
-    }
-    cout << endl;
-}*/
 //retorna valor minimo da arvore
 template <typename Tchave>
 node<Tchave>* tree<Tchave>::min() {
@@ -119,7 +79,7 @@ node<Tchave>* tree<Tchave>::max() {
 }
 //função inserir na arvore
 template <typename Tchave>
-void tree<Tchave>::inserir(Tchave chave, string p) {
+void tree<Tchave>::inserir(Tchave chave, pessoa *p) {
     if(raiz == nullptr) {
         //cria novo nó com os valores recebidos, caso seja a primeira inserção
         raiz = new node<Tchave>(chave, p);
@@ -128,20 +88,6 @@ void tree<Tchave>::inserir(Tchave chave, string p) {
         raiz = raiz->insert(chave, p);
     }
 }
-/*//chamada da função remove
-template <typename Tchave>
-void tree<Tchave>::remover(Tchave chave) {
-    if(raiz != nullptr) {
-        raiz = raiz->remove(chave);
-    }
-}*/
-//chamada da fução remove que limpa a arvore
-/*template <typename Tchave>
-void tree<Tchave>::remover_tudo(){
-    if(raiz != nullptr) {
-        raiz = raiz->remove_all(raiz);
-    }
-}*/
 //a partir de uma chave, essa funçao retorna o valor do nó
 template <typename Tchave>
 void tree<Tchave>::pesquisar(Tchave chave){
