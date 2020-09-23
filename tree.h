@@ -124,7 +124,7 @@ void tree<Tchave>::inserir(Tchave chave, string p) {
         //cria novo nó com os valores recebidos, caso seja a primeira inserção
         raiz = new node<Tchave>(chave, p);
     } else {
-        //chamada da função para inserir novos valores
+        //chamada da função para inserir novos valoress
         raiz = raiz->insert(chave, p);
     }
 }

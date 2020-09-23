@@ -54,7 +54,7 @@ void node<Tchave>::desalocarMemoria(){
         delete currentNode;
     }
 }
-
+//ss
 //maximo valor da chave da arvore
 template <typename Tchave>
 node<Tchave>* node<Tchave>::max() {

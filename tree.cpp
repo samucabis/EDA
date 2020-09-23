@@ -73,7 +73,7 @@ node* tree::min() {
     }
     return raiz->min();
 }
-//retorna valor max da arvore
+//retorna valor max da arvores
 node* tree::max() {
     if(raiz == nullptr) {
         return nullptr;

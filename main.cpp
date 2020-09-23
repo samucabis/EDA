@@ -83,7 +83,7 @@ void init(int op, tree<Tchave> *t, bool *b) {
     }
     case 3:
     {
-       // t->pre_ordem();
+       // t->pre_ordem();s
         limpaTela();
         break;
     }
