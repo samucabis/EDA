@@ -47,9 +47,10 @@ void init(int op, tree<Tchave> *t, bool *b) {
         Tchave novaChave;
         cout << "Entre com a chave a ser inserido: ";
         cin >> novaChave;
-        //pessoa p = new pessoa("cpf","nome","sobrenome","data","cidade");
-        string p = "teste progam";
-        t->inserir(novaChave, p);
+        pessoa *p = new pessoa("cpf","nome","sobrenome","data","cidade");
+        p->printPessoa();
+        //string p = "teste progam";
+        //t->inserir(novaChave, p);
         limpaTela();
         break;
     }

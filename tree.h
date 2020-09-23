@@ -71,7 +71,7 @@ int tree<Tchave>::altura() {
     return raiz->getAltura();
 }
 /*
-//função pre ordem
+//função pre ordemss
 template <typename Tchave>
 void tree<Tchave>::pre_ordem() {
     if(raiz == nullptr) {

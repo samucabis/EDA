@@ -68,7 +68,7 @@ node<Tchave>* node<Tchave>::max() {
     }
     return currentNode;
 }
-//menor chave da arvore
+//menor chave da arvoress
 template <typename Tchave>
 node<Tchave>* node<Tchave>::min() {
     node *currentNode = this;

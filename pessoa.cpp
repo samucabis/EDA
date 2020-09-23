@@ -1,4 +1,7 @@
 #include "pessoa.h"
+#include <iostream>
+
+using namespace std;
 
 pessoa::pessoa(string cpf, string nome, string snome, string nasc, string cidade) {
     this->cpf   = cpf;
@@ -8,4 +11,7 @@ pessoa::pessoa(string cpf, string nome, string snome, string nasc, string cidade
     this->cidade  = cidade;
 }
 pessoa::pessoa() {
+}
+void pessoa::printPessoa(){
+    cout << this->cpf << " - " << this->nome << endl;
 }
