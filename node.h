@@ -157,12 +157,14 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa *p)  {
         return nullptr;
     }
     //verifica se a chave e menor pra inserir no lado esquerdo
-    else if(stoi(chave) < stoi(currentNode->chave)) {
+    else if(chave < currentNode->chave) {
+        cout << "node : " << this->getChave() << endl;
         cout << "inserir chave menor " << endl;
         currentNode->esq = currentNode->esq->insert(chave, p);
     }
     //caso contrario chama a função pro lado direito
     else {
+        cout << "node : " << this->getChave() << endl;
         cout << "inserir chave maior " << endl;
         currentNode->dir = currentNode->dir->insert(chave, p);
     }

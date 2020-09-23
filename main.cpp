@@ -140,7 +140,7 @@ void init(int op, tree<Tchave> *t, bool *b) {
 }
 
 int main() {
-    tree<string> *t = new tree<string>();
+    tree<int> *t = new tree<int>();
     bool continua = true;
 
     while(continua) {
