@@ -2,7 +2,7 @@
 #define NODE_H
 #include "pessoa.h"
 #include <iostream>
-
+#include <string>
 
 // ########################################### NODE #####################################################
 template <typename Tchave> 
@@ -29,9 +29,10 @@ public:
     node* min();
     node* max();
     node* search(node *x, Tchave chave);
+    pessoa *pssoa;
 private:
     Tchave chave;
-    pessoa *pssoa;
+
     int altura;
 
 };
@@ -42,6 +43,8 @@ node<Tchave>::node(Tchave chave, pessoa *p)
     this->chave = chave;
     this->pssoa = p;
     this->altura = 1;
+    this->esq = nullptr;
+    this->dir = nullptr;
     
 }
 template <typename Tchave>
@@ -142,7 +145,25 @@ node<Tchave>* node<Tchave>::rotacao_esq(node *x) {
     return y;
 }
 
+template<typename Tchave>
+Tchave operator<(Tchave a, Tchave b) {
+         if(a < b)
+            return true;
+         return false;
+}
 
+template<typename Tchave>
+Tchave operator>(Tchave a, Tchave b) {
+         if(a > b)
+            return true;
+         return false;
+}
+template<typename Tchave>
+bool operator==(Tchave a, Tchave b) {
+         if(a == b)
+            return true;
+         return false;
+}
 
 template <typename Tchave>
 node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa *p)  {
@@ -151,29 +172,45 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa *p)  {
     if(currentNode == nullptr) {
         //retorna novo no
         cout << "inserir vazio " << endl;
+        cout << "Chave a ser inserida no vazio : " << chave << endl;
+        cout << "CPF " << p->cpf << endl;
         return new node(chave, p);
     }
     // se a chave for igual, retorna null
-    if(currentNode->chave == chave) {
+    if((string)currentNode->chave == (string)chave) {
         cout << "inserir chave igual " << endl;
-        return nullptr;
+        if(p->cpf < currentNode->pssoa->cpf){
+            currentNode->esq = currentNode->esq->insert(chave, p);
+        }else{
+            currentNode->dir = currentNode->dir->insert(chave, p);
+        }
     }
-    //verifica se a chave e menor pra inserir no lado esquerdo
-    else if(chave < currentNode->chave) {
-        cout << "node : " << this->getChave() << endl;
-        cout << "inserir chave menor " << endl;
+    //verifica se a chave e menor pra inserir no lado esquerdo                                 
+    else if((string)chave < (string)currentNode->chave) {                                                   
+        cout << "node atual : " << this->getChave() << endl;
+        cout << "inserir chave menor :"<< chave << endl;
+        if(currentNode->esq == nullptr){
+            cout << "filho esquerdo nulo" << endl;
+        }else{
+            cout << "filho esquerdo não nulo " << endl;
+        }
         currentNode->esq = currentNode->esq->insert(chave, p);
     }
     //caso contrario chama a função pro lado direito
     else {
-        cout << "node : " << this->getChave() << endl;
-        cout << "inserir chave maior " << endl;
+        cout << "node atual : " << this->getChave() << endl;
+        cout << "inserir chave maior :"<< chave << endl;
+        if(currentNode->dir == nullptr){
+            cout << "filho direito nulo" << endl;
+        }else{
+            cout << "filho direito não nulo " << endl;
+        }
         currentNode->dir = currentNode->dir->insert(chave, p);
     }
 
     currentNode->altura = std::max(currentNode->esq->getAltura(),
                                    currentNode->dir->getAltura()) + 1;
-    //calcula o balanço
+   //calcula o balanço
     int balanco_diferenca = currentNode->getBalanco();
     //verifica se precisa de rotaçao
     if(balanco_diferenca > 1 &&
@@ -195,7 +232,7 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa *p)  {
             chave < currentNode->dir->chave) {
         currentNode->dir = rotacao_dir(currentNode->dir);
     }
-
+  
     return currentNode;
 }
 

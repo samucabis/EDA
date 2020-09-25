@@ -31,7 +31,7 @@ int menu() {
     cout << "7 - Numero de folhas da arvore"            << endl;
     cout << "8 - Valor maximo e minimo"                 << endl;
     cout << "9 - Apagar todos os nos da arvore"         << endl;
-    cout << "10- pesquisar uma chave e retornar o valor"<< endl;
+    cout << "10- Consultar por CPF"                     << endl;
     cout << "0 - Sair"                                  << endl;
     cout << ">> ";
     cin >> op;
@@ -40,17 +40,26 @@ int menu() {
 }
 //switch case do menu principal
 template <typename Tchave>
-void init(int op, tree<Tchave> *t, bool *b, vector<pessoa> *pessoas) {
+void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> pessoas) {
     system("clear");
     switch(op)
     {
     case 1:
     {
-        //cout << pessoas->size() << endl;
-        for(pessoa p: *pessoas){
-            t->inserir(p.cpf, &p);
+        //cout << pessoas.size() << endl;
+        int i=1;
+        for(;i < pessoas.size();){
+            //p.printPessoa();
+            pessoa *pe = &pessoas.at(i);
+            //cout << pe->cpf << endl;
+            //cout << pessoas.at(i).cpf.substr(0,2) << endl;
+            //t->inserir(pessoas.at(i).cpf, pe);
+            t->inserir(pessoas.at(i).nome, pe);
+            //t2->inserir(pessoas.at(i).nasc, pe);
+            i++;
         }
     
+        
         limpaTela();
         break;
     }
@@ -84,7 +93,11 @@ void init(int op, tree<Tchave> *t, bool *b, vector<pessoa> *pessoas) {
     case 6:
     {
         int altura = t->altura();
-        cout << "Altura da arvore: " << altura << endl;
+        //int altura1 = t1->altura();
+        //int altura2 = t2->altura();
+        cout << "Altura da arvore cpf: " << altura << endl;
+       // cout << "Altura da arvore nome: " << altura1 << endl;
+        //cout << "Altura da arvore nascimento : " << altura2 << endl;
         limpaTela();
         break;
     }
@@ -140,19 +153,22 @@ void init(int op, tree<Tchave> *t, bool *b, vector<pessoa> *pessoas) {
 }
 
 int main() {
-    tree<string> *t = new tree<string>();
+   // tree<string> *t = new tree<string>();
+    tree<string> *t1 = new tree<string>();
+   // tree<string> *t2 = new tree<string>();
     ReadCsv readcsv;
     vector<pessoa> pessoas = read_csv("data.csv");
-
-
 
     bool continua = true;
 
     while(continua) {
-        init(menu(), t, &continua, &pessoas);
-    }
+        init(menu(),  t1, &continua, pessoas);
+    } 
 
-    delete t;
+
+    //delete t;
+    delete t1;
+    //delete t2;
 
     return 0;
 }

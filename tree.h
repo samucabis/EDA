@@ -80,12 +80,15 @@ node<Tchave>* tree<Tchave>::max() {
 //função inserir na arvore
 template <typename Tchave>
 void tree<Tchave>::inserir(Tchave chave, pessoa *p) {
-
+    //cout << raiz->getChave() << endl;
     if(raiz == nullptr) {
         //cria novo nó com os valores recebidos, caso seja a primeira inserção
+        cout << "raiz " << endl;
         raiz = new node<Tchave>(chave, p);
+        cout << raiz->pssoa->cpf << " -  - - " << raiz->pssoa->nome << endl;
     } else {
         //chamada da função para inserir novos valores
+        cout << "não raiz " << endl;
         raiz = raiz->insert(chave, p);
     }
 }

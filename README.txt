@@ -7,9 +7,9 @@ Compilando e executando:
 
 - criar objeto pessoa (OK)
 - fazer ler o csv	(OK)
-- confgurar o stoi
+- confgurar o stoi     (ok)
 - consultar uma unica pessoa 
-- consultar pelo cpf
+- consultar pelo cpf (OK)
 - consultar pela string informada
 - • Consultar todas as pessoas cuja data de nascimento esteja em um intervalo
 estabelecido pelo usu´ario 
