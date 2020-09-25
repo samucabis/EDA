@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cstdlib>
 #include "tree.h"
+#include <vector>
+#include "ReadCsv.h"
 
 using namespace std;
 
@@ -20,7 +22,7 @@ int menu() {
     cout << "Implementacao da arvore AVL    "           << endl;
     cout << "-----------------------------  "           << endl;
     cout                                                << endl;
-    cout << "1 - Inserir"                               << endl;
+    cout << "1 - Gerar arvores"                         << endl;
     cout << "2 - Remover"                               << endl;
     cout << "3 - Percurso pre-ordem"                    << endl;
     cout << "4 - Percurso em-ordem"                     << endl;
@@ -38,19 +40,17 @@ int menu() {
 }
 //switch case do menu principal
 template <typename Tchave>
-void init(int op, tree<Tchave> *t, bool *b) {
+void init(int op, tree<Tchave> *t, bool *b, vector<pessoa> *pessoas) {
     system("clear");
     switch(op)
     {
     case 1:
     {
-        Tchave novaChave;
-        cout << "Entre com a chave a ser inserido: ";
-        cin >> novaChave;
-        pessoa *p = new pessoa("cpf","nome","sobrenome","data","cidade");
-        p->printPessoa();
-        //string p = "teste progam";
-        t->inserir(novaChave, p);
+        //cout << pessoas->size() << endl;
+        for(pessoa p: *pessoas){
+            t->inserir(p.cpf, &p);
+        }
+    
         limpaTela();
         break;
     }
@@ -140,11 +140,16 @@ void init(int op, tree<Tchave> *t, bool *b) {
 }
 
 int main() {
-    tree<int> *t = new tree<int>();
+    tree<string> *t = new tree<string>();
+    ReadCsv readcsv;
+    vector<pessoa> pessoas = read_csv("data.csv");
+
+
+
     bool continua = true;
 
     while(continua) {
-        init(menu(), t, &continua);
+        init(menu(), t, &continua, &pessoas);
     }
 
     delete t;

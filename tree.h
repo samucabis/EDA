@@ -81,17 +81,12 @@ node<Tchave>* tree<Tchave>::max() {
 template <typename Tchave>
 void tree<Tchave>::inserir(Tchave chave, pessoa *p) {
 
-    cout << "inserir tree " << endl;
     if(raiz == nullptr) {
         //cria novo nó com os valores recebidos, caso seja a primeira inserção
-        cout << "inserir if " << endl;
         raiz = new node<Tchave>(chave, p);
-        cout << "inserir if dps da raiz = ... " << endl;
     } else {
         //chamada da função para inserir novos valores
-        cout << "inserir else " << endl;
         raiz = raiz->insert(chave, p);
-        cout << "inserir else raiz = ... " << endl;
     }
 }
 //a partir de uma chave, essa funçao retorna o valor do nó

@@ -5,8 +5,8 @@ Compilando e executando:
 2. Digite: g++ -o avl main.cpp node.cpp tree.cpp item.h
 3. O arquivo run será criado, execute-o digitando ./avl no terminal
 
-- criar objeto pessoa
-- fazer ler o csv
+- criar objeto pessoa (OK)
+- fazer ler o csv	(OK)
 - confgurar o stoi
 - consultar uma unica pessoa 
 - consultar pelo cpf
