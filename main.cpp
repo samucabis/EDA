@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cstdlib>
 #include "tree.h"
+#include <vector>
+#include "ReadCsv.h"
 
 using namespace std;
 
@@ -20,7 +22,7 @@ int menu() {
     cout << "Implementacao da arvore AVL    "           << endl;
     cout << "-----------------------------  "           << endl;
     cout                                                << endl;
-    cout << "1 - Inserir"                               << endl;
+    cout << "1 - Gerar arvores"                         << endl;
     cout << "2 - Remover"                               << endl;
     cout << "3 - Percurso pre-ordem"                    << endl;
     cout << "4 - Percurso em-ordem"                     << endl;
@@ -29,7 +31,7 @@ int menu() {
     cout << "7 - Numero de folhas da arvore"            << endl;
     cout << "8 - Valor maximo e minimo"                 << endl;
     cout << "9 - Apagar todos os nos da arvore"         << endl;
-    cout << "10- pesquisar uma chave e retornar o valor"<< endl;
+    cout << "10- Consultar por CPF"                     << endl;
     cout << "0 - Sair"                                  << endl;
     cout << ">> ";
     cin >> op;
@@ -38,19 +40,26 @@ int menu() {
 }
 //switch case do menu principal
 template <typename Tchave>
-void init(int op, tree<Tchave> *t, bool *b) {
+void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> &pessoas) {
     system("clear");
     switch(op)
     {
     case 1:
     {
-        Tchave novaChave;
-        cout << "Entre com a chave a ser inserido: ";
-        cin >> novaChave;
-        pessoa *p = new pessoa("cpf","nome","sobrenome","data","cidade");
-        p->printPessoa();
-        //string p = "teste progam";
-        t->inserir(novaChave, p);
+        //cout << pessoas.size() << endl;1
+        int i=1;
+        for(pessoa &p : pessoas){
+            //p.printPessoa();
+            //pessoa *pe = &pessoas.at(i);
+            cout << "LINHA :" << i << endl;
+            //cout << pessoas.at(i).cpf.substr(0,2) << endl;
+            t->inserir(p.cpf, p);
+            //t->inserir(pessoas.at(i).nome, pe);
+            //t2->inserir(pessoas.at(i).nasc, pe);
+            i++;
+        }
+    
+        
         limpaTela();
         break;
     }
@@ -84,7 +93,11 @@ void init(int op, tree<Tchave> *t, bool *b) {
     case 6:
     {
         int altura = t->altura();
-        cout << "Altura da arvore: " << altura << endl;
+        //int altura1 = t1->altura();
+        //int altura2 = t2->altura();
+        cout << "Altura da arvore cpf: " << altura << endl;
+       // cout << "Altura da arvore nome: " << altura1 << endl;
+        //cout << "Altura da arvore nascimento : " << altura2 << endl;
         limpaTela();
         break;
     }
@@ -140,14 +153,22 @@ void init(int op, tree<Tchave> *t, bool *b) {
 }
 
 int main() {
-    tree<int> *t = new tree<int>();
+    tree<string> *t = new tree<string>();
+    //tree<string> *t1 = new tree<string>();
+   // tree<string> *t2 = new tree<string>();
+    ReadCsv readcsv;
+    vector<pessoa> pessoas = read_csv("data.csv");
+
     bool continua = true;
 
     while(continua) {
-        init(menu(), t, &continua);
-    }
+        init(menu(),  t, &continua, pessoas);
+    } 
+
 
     delete t;
+    //delete t1;
+    //delete t2;
 
     return 0;
 }

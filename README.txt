@@ -5,11 +5,11 @@ Compilando e executando:
 2. Digite: g++ -o avl main.cpp node.cpp tree.cpp item.h
 3. O arquivo run será criado, execute-o digitando ./avl no terminal
 
-
-- fazer ler o csv
-- confgurar o stoi
+- criar objeto pessoa (OK)
+- fazer ler o csv	(OK)
+- confgurar o stoi     (ok)
 - consultar uma unica pessoa 
-- consultar pelo cpf
+- consultar pelo cpf (OK)
 - consultar pela string informada
 - • Consultar todas as pessoas cuja data de nascimento esteja em um intervalo
 estabelecido pelo usu´ario 

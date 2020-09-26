@@ -11,7 +11,7 @@ class pessoa
     public:
         pessoa(string cpf, string nome, string snome, string nasc, string cidade);
         pessoa();
-        ~pessoa();
+        //~pessoa();1
         void printPessoa();
         string cpf;
         string nasc;
