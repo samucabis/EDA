@@ -40,7 +40,7 @@ int menu() {
 }
 //switch case do menu principal
 template <typename Tchave>
-void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> &pessoas) {
+void init(int op, tree<Tchave> *t, bool *b, vector<pessoa> &pessoas) {
     system("clear");
     switch(op)
     {
@@ -51,10 +51,10 @@ void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> &pessoas) {
         for(pessoa &p : pessoas){
             //p.printPessoa();
             //pessoa *pe = &pessoas.at(i);
-            cout << "LINHA :" << i << endl;
+            cout << "LINHA :" << i  << " NOME :" << p.nome << endl;
             //cout << pessoas.at(i).cpf.substr(0,2) << endl;
-            t->inserir(p.cpf, p);
-            //t->inserir(pessoas.at(i).nome, pe);
+            //t->inserir(p.cpf, p);
+            t->inserir(p.nome, p);
             //t2->inserir(pessoas.at(i).nasc, pe);
             i++;
         }

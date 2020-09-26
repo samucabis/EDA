@@ -153,12 +153,12 @@ int node<Tchave>::getBalanco() {
 template<typename Tchave>
 node<Tchave>* node<Tchave>::rotacao_dir(node *y) {
     if(y->esq == nullptr){
-        cout << "nulo esq rot dir" << endl;
         y->esq = new node();
+        y->esq->pssoa = new pessoa();
     }
     if(y->dir == nullptr){
-        cout << "nulo dir rot dir" << endl;
         y->dir = new node();
+        y->dir->pssoa = new pessoa();
     }
     node *x = y->esq;
     node *T2 = x->dir;
@@ -175,12 +175,12 @@ node<Tchave>* node<Tchave>::rotacao_dir(node *y) {
 template<typename Tchave>
 node<Tchave>* node<Tchave>::rotacao_esq(node *x) {
     if(x->esq == nullptr){
-        cout << "nulo esq rot esq" << endl;
         x->esq = new node();
+        x->esq->pssoa = new pessoa();
     }
     if(x->dir == nullptr){
-        cout << "nulo dir rot esq" << endl;
         x->dir = new node();
+        x->dir->pssoa = new pessoa();
     }
 
     node *y = x->dir;
@@ -196,28 +196,35 @@ node<Tchave>* node<Tchave>::rotacao_esq(node *x) {
     return y;
 }
 
-
-
-
 template <typename Tchave>
 node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa &p)  {
     //verifica se o no atual é vazio
     node *currentNode = this;
     if(currentNode == nullptr) {
         //retorna novo no
-        cout << "inserir vazio " << endl;;
+        cout << "inserir vazio " << endl;
         return new node(chave, p);
     }
     // se a chave for igual, retorna null
-    //verifica se a chave e menor pra inserir no lado esquerdo                                 
-    if(chave < currentNode->chave) {                                                   
-        cout << "indo para esquerda do no" << endl;
-        currentNode->esq = currentNode->esq->insert(chave, p);
-    }
-    //caso contrario chama a função pro lado direito
-    else {
-        cout << "indo para direita do no "<< endl;
-        currentNode->dir = currentNode->dir->insert(chave, p);
+    if(chave == currentNode->chave){
+        currentNode->pssoa->igualdade = true;
+        if(currentNode->pssoa->cpf < p.cpf){
+            currentNode->dir = currentNode->dir->insert(chave, p);
+        }else{
+            currentNode->esq = currentNode->esq->insert(chave, p);
+        }
+
+    }else{
+        //verifica se a chave e menor pra inserir no lado esquerdo                                 
+        if(chave < currentNode->chave) {                                                   
+            cout << "indo para esquerda do no" << endl;
+            currentNode->esq = currentNode->esq->insert(chave, p);
+        }
+        //caso contrario chama a função pro lado direito
+        else {
+            cout << "indo para direita do no "<< endl;
+            currentNode->dir = currentNode->dir->insert(chave, p);
+        }
     }
 
     currentNode->altura = std::max(currentNode->esq->getAltura(),
@@ -225,47 +232,82 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa &p)  {
    //calcula o balanço
     int balanco_diferenca = currentNode->getBalanco();
     cout << "Balanço : " << currentNode->getBalanco() << endl;
-    
+
     //verifica se precisa de rotaçao
-    if(balanco_diferenca > 1 &&
-            chave < currentNode->esq->chave) {
-        cout << "balanço  > 1 e chave <" << endl;
-        //rot_dir(currentNode);        
-        return rotacao_dir(currentNode);
-    }
+    cout << chave << " - " << currentNode->esq->chave << endl;
 
-    if(balanco_diferenca < -1 &&
-            chave > currentNode->dir->chave) {
-                cout << "balanço < -1 e chave >" << endl;
-        //rot_esq(currentNode);
-        return rotacao_esq(currentNode);
+
+
+
+
+    if(currentNode->pssoa->igualdade){
+        //cout << "chaves diferentes" << endl;
+        if(balanco_diferenca > 1 &&
+                chave < currentNode->esq->chave) {
+            //rot_dir(currentNode);        
+            return rotacao_dir(currentNode);
+        }
+
+        if(balanco_diferenca < -1 &&
+                chave > currentNode->dir->chave) {
+            //rot_esq(currentNode);
+            return rotacao_esq(currentNode);
+        }
+        
+        if(balanco_diferenca > 1 &&
+                chave > currentNode->esq->chave) {
+                    //rot_esq_dir(currentNode);
+                    //cout << currentNode->esq->chave << endl;
+                    currentNode->esq = rotacao_esq(currentNode->esq);
+                    return rotacao_dir(currentNode);
+                    
+        }
+        if(balanco_diferenca < -1 &&
+                chave < currentNode->dir->chave) {
+                    //rot_dir_esq(currentNode);
+                    currentNode->dir = rotacao_dir(currentNode->dir);
+                    return rotacao_esq(currentNode);
+                    
+        }
+    
     }
     
-   if(balanco_diferenca > 1 &&
-            chave > currentNode->esq->chave) {
-                //rot_esq_dir(currentNode);
-                //cout << currentNode->esq->chave << endl;
-                cout << " 2 " << endl;
-                //return rotacao_esq(rotacao_dir(currentNode));
-                if(currentNode->esq == NULL){
-                    cout << "É NULO" << endl;
-                }
-                currentNode->esq = rotacao_esq(currentNode->esq);
-                return rotacao_dir(currentNode);
-                
-    }
-    if(balanco_diferenca < -1 &&
-            chave < currentNode->dir->chave) {
-                //rot_dir_esq(currentNode);
-                 cout << " 3 " << endl;
+    else{ // ELSE BALANÇO COM CHAVES IGUAIS
+        cout << "chaves iguais" << endl;
+        if(currentNode->esq->pssoa == nullptr){
+            currentNode->esq->pssoa = new pessoa();
+        }
+        if(currentNode->dir->pssoa == nullptr){
+            currentNode->dir->pssoa = new pessoa();
+        }
+        if(balanco_diferenca > 1 &&
+            p.cpf < currentNode->esq->pssoa->cpf) {
+            //rot_dir(currentNode);        
+            return rotacao_dir(currentNode);
+        }
 
-                //return rotacao_dir(rotacao_esq(currentNode));1
-                if(currentNode->dir == NULL){
-                    cout << "É NULO" << endl;
-                }
-                currentNode->dir = rotacao_dir(currentNode->dir);
-                return rotacao_esq(currentNode);
-                
+        if(balanco_diferenca < -1 &&
+                p.cpf > currentNode->dir->pssoa->cpf) {
+            //rot_esq(currentNode);
+            return rotacao_esq(currentNode);
+        }
+        
+        if(balanco_diferenca > 1 &&
+                p.cpf > currentNode->esq->pssoa->cpf) {
+                    //rot_esq_dir(currentNode);
+                    //cout << currentNode->esq->chave << endl;
+                    currentNode->esq = rotacao_esq(currentNode->esq);
+                    return rotacao_dir(currentNode);
+                    
+        }
+        if(balanco_diferenca < -1 &&
+                p.cpf < currentNode->dir->pssoa->cpf) {
+                    //rot_dir_esq(currentNode);
+                    currentNode->dir = rotacao_dir(currentNode->dir);
+                    return rotacao_esq(currentNode);
+                    
+        }
+
     }
   
     return currentNode;
