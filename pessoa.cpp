@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace std;
-
+//1
 pessoa::pessoa(string cpf, string nome, string snome, string nasc, string cidade) {
     this->cpf   = cpf;
 	this->nome   = nome;

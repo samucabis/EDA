@@ -32,7 +32,7 @@ vector<pessoa> read_csv(string filename){
     // Helper vars
     stringstream colname;
     string line;
-    //sstring line, colname;
+    //sstring line, colname;1
     string val;
 
     // Read data, line by line

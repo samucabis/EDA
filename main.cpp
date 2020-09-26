@@ -46,7 +46,7 @@ void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> &pessoas) {
     {
     case 1:
     {
-        //cout << pessoas.size() << endl;
+        //cout << pessoas.size() << endl;1
         int i=1;
         for(pessoa &p : pessoas){
             //p.printPessoa();

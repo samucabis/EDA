@@ -9,6 +9,7 @@ template <typename Tchave>
 class node {
 public:
     node(Tchave, pessoa &p);
+    node();
     node *esq ;
     node *dir ;
     Tchave getChave();
@@ -36,6 +37,15 @@ private:
     int altura;
 
 };
+
+template <typename Tchave>
+node<Tchave>::node() 
+{
+    this->altura = 1;
+    this->dir = NULL;
+    this->esq = NULL;
+}
+
 
 template <typename Tchave>
 node<Tchave>::node(Tchave chave, pessoa &p) 
@@ -219,17 +229,25 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa &p)  {
                 //cout << currentNode->esq->chave << endl;
                 cout << " 2 " << endl;
                 //return rotacao_esq(rotacao_dir(currentNode));
+                if(currentNode->esq == nullptr){
+                    cout << "É NULO" << endl;
+                }
                 currentNode->esq = rotacao_esq(currentNode->esq);
                 return rotacao_dir(currentNode);
+                
     }
     if(balanco_diferenca < -1 &&
-            chave < currentNode->dir->chave && currentNode->dir != NULL) {
+            chave < currentNode->dir->chave) {
                 //rot_dir_esq(currentNode);
                  cout << " 3 " << endl;
 
-                //return rotacao_dir(rotacao_esq(currentNode));
+                //return rotacao_dir(rotacao_esq(currentNode));1
+                if(currentNode->dir == nullptr){
+                    cout << "É NULO" << endl;
+                }
                 currentNode->dir = rotacao_dir(currentNode->dir);
                 return rotacao_esq(currentNode);
+                
     }
   
     return currentNode;
