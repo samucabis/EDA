@@ -10,8 +10,8 @@ class node {
 public:
     node(Tchave, pessoa &p);
     node();
-    node *esq ;
-    node *dir ;
+    node *esq = NULL ;
+    node *dir = NULL ;
     Tchave getChave();
 	string getPessoa();
     //int numeroFolhas();
@@ -41,11 +41,12 @@ private:
 template <typename Tchave>
 node<Tchave>::node() 
 {
+
     this->altura = 1;
     this->dir = NULL;
     this->esq = NULL;
+    
 }
-
 
 template <typename Tchave>
 node<Tchave>::node(Tchave chave, pessoa &p) 
@@ -151,6 +152,14 @@ int node<Tchave>::getBalanco() {
 
 template<typename Tchave>
 node<Tchave>* node<Tchave>::rotacao_dir(node *y) {
+    if(y->esq == nullptr){
+        cout << "nulo esq rot dir" << endl;
+        y->esq = new node();
+    }
+    if(y->dir == nullptr){
+        cout << "nulo dir rot dir" << endl;
+        y->dir = new node();
+    }
     node *x = y->esq;
     node *T2 = x->dir;
 
@@ -165,6 +174,15 @@ node<Tchave>* node<Tchave>::rotacao_dir(node *y) {
 
 template<typename Tchave>
 node<Tchave>* node<Tchave>::rotacao_esq(node *x) {
+    if(x->esq == nullptr){
+        cout << "nulo esq rot esq" << endl;
+        x->esq = new node();
+    }
+    if(x->dir == nullptr){
+        cout << "nulo dir rot esq" << endl;
+        x->dir = new node();
+    }
+
     node *y = x->dir;
     node *T2 = y->esq;
 
@@ -229,7 +247,7 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa &p)  {
                 //cout << currentNode->esq->chave << endl;
                 cout << " 2 " << endl;
                 //return rotacao_esq(rotacao_dir(currentNode));
-                if(currentNode->esq == nullptr){
+                if(currentNode->esq == NULL){
                     cout << "É NULO" << endl;
                 }
                 currentNode->esq = rotacao_esq(currentNode->esq);
@@ -242,7 +260,7 @@ node<Tchave>* node<Tchave>::insert(Tchave chave, pessoa &p)  {
                  cout << " 3 " << endl;
 
                 //return rotacao_dir(rotacao_esq(currentNode));1
-                if(currentNode->dir == nullptr){
+                if(currentNode->dir == NULL){
                     cout << "É NULO" << endl;
                 }
                 currentNode->dir = rotacao_dir(currentNode->dir);
