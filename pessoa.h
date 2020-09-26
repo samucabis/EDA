@@ -18,6 +18,7 @@ class pessoa
         string nome;
         string snome;
         string cidade; 
+        bool igualdade;
 };
 
 #endif
