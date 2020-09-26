@@ -40,7 +40,7 @@ int menu() {
 }
 //switch case do menu principal
 template <typename Tchave>
-void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> pessoas) {
+void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> &pessoas) {
     system("clear");
     switch(op)
     {
@@ -48,13 +48,13 @@ void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> pessoas) {
     {
         //cout << pessoas.size() << endl;
         int i=1;
-        for(;i < pessoas.size();){
+        for(pessoa &p : pessoas){
             //p.printPessoa();
-            pessoa *pe = &pessoas.at(i);
-            //cout << pe->cpf << endl;
+            //pessoa *pe = &pessoas.at(i);
+            cout << "LINHA :" << i << endl;
             //cout << pessoas.at(i).cpf.substr(0,2) << endl;
-            //t->inserir(pessoas.at(i).cpf, pe);
-            t->inserir(pessoas.at(i).nome, pe);
+            t->inserir(p.cpf, p);
+            //t->inserir(pessoas.at(i).nome, pe);
             //t2->inserir(pessoas.at(i).nasc, pe);
             i++;
         }
@@ -153,8 +153,8 @@ void init(int op,tree<Tchave> *t, bool *b, vector<pessoa> pessoas) {
 }
 
 int main() {
-   // tree<string> *t = new tree<string>();
-    tree<string> *t1 = new tree<string>();
+    tree<string> *t = new tree<string>();
+    //tree<string> *t1 = new tree<string>();
    // tree<string> *t2 = new tree<string>();
     ReadCsv readcsv;
     vector<pessoa> pessoas = read_csv("data.csv");
@@ -162,12 +162,12 @@ int main() {
     bool continua = true;
 
     while(continua) {
-        init(menu(),  t1, &continua, pessoas);
+        init(menu(),  t, &continua, pessoas);
     } 
 
 
-    //delete t;
-    delete t1;
+    delete t;
+    //delete t1;
     //delete t2;
 
     return 0;

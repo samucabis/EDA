@@ -23,7 +23,7 @@ public:
     //void pre_ordem();
    // void em_ordem();
     //void pos_ordem();
-    void inserir(Tchave chave, pessoa *p);
+    void inserir(Tchave chave, pessoa &p);
     //void remover(Tchave chave);
     //void remover_tudo();
     node<Tchave>* min();
@@ -79,13 +79,12 @@ node<Tchave>* tree<Tchave>::max() {
 }
 //função inserir na arvore
 template <typename Tchave>
-void tree<Tchave>::inserir(Tchave chave, pessoa *p) {
+void tree<Tchave>::inserir(Tchave chave, pessoa &p) {
     //cout << raiz->getChave() << endl;
     if(raiz == nullptr) {
         //cria novo nó com os valores recebidos, caso seja a primeira inserção
         cout << "raiz " << endl;
         raiz = new node<Tchave>(chave, p);
-        cout << raiz->pssoa->cpf << " -  - - " << raiz->pssoa->nome << endl;
     } else {
         //chamada da função para inserir novos valores
         cout << "não raiz " << endl;
