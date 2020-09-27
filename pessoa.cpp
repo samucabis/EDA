@@ -15,5 +15,5 @@ pessoa::pessoa() {
     this->igualdade = false;
 }
 void pessoa::printPessoa(){
-    cout << this->cpf << " - " << this->nome << endl;
+    cout << this->cpf << " - " << this->nome << " " << this->snome << " - " << this->nasc << " - " << this->cidade << endl;
 }
