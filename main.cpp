@@ -50,16 +50,18 @@ void init(int op, tree<Tchave> *t, tree<Tchave> *t1, tree<Tchave> *t2,  bool *b,
     case 1:
     {
         //cout << pessoas.size() << endl;1
-        int i = 1;
+        int i = 0;
         for (pessoa &p : pessoas)
         {
             //p.printPessoa();
             //pessoa *pe = &pessoas.at(i);
-            cout << "LINHA :" << i << " NOME :" << p.nome << endl;
+
+            cout << "LINHA :" << i << " NOME :" << p.cpf << endl;
             //cout << pessoas.at(i).cpf.substr(0,2) << endl;
             t->inserir(p.cpf, p);
             t1->inserir(p.nome, p);
-            t2->inserir(p.nasc, p);
+            //t2->inserir(p.nasc, p);
+
             i++;
         }
 
@@ -149,7 +151,9 @@ void init(int op, tree<Tchave> *t, tree<Tchave> *t1, tree<Tchave> *t2,  bool *b,
         Tchave chave;
         cout << "Digite uma Chave..." << endl;
         cin >> chave;
-        t->pesquisar(chave);
+        if(chave.size() == 11)
+            t->pesquisar(chave);
+        else cout << "Cpf invalido" << endl;   
         limpaTela();
         break;
     }

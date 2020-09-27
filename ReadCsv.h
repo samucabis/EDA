@@ -36,8 +36,10 @@ vector<pessoa> read_csv(string filename){
     string val;
 
     // Read data, line by line
+    int cont = 0;
     while(std::getline(myFile, line))
     {
+        
         pessoa p;
         // Create a stringstream of the current line
         stringstream ss(line);
@@ -47,7 +49,8 @@ vector<pessoa> read_csv(string filename){
        while(std::getline(ss, token, ',')) {
            
             if(i == 0){
-                p.cpf = token;
+                string temp = token.substr(0,3) + token.substr(4,3) + token.substr(8,3) + token.substr(12,2)  ;
+                p.cpf = temp;
             }
             else if(i == 1){
                 p.nome = token;
@@ -66,8 +69,9 @@ vector<pessoa> read_csv(string filename){
                 i = 0;  
                   
         }
-           
-            result.push_back(p);    
+            if(cont != 0)
+                result.push_back(p);
+            cont++;        
 
        
     }

@@ -30,7 +30,7 @@ public:
     //node* minValueNode(node *x);
     node *min();
     node *max();
-    node *search(node *x, Tchave chave);
+    void search(node *x, Tchave chave);
     void searchnome(node *x, Tchave chave);
     pessoa *pssoa;
 
@@ -331,16 +331,14 @@ node<Tchave> *node<Tchave>::insert(Tchave chave, pessoa &p)
 }
 
 template <typename Tchave>
-node<Tchave> *node<Tchave>::search(node *x, Tchave chave)
+void node<Tchave>::search(node *x, Tchave chave)
 {
-    if (x == nullptr)
-        return nullptr;
-    if (chave < x->chave)
-        return search(x->esq, chave);
-    else if (chave > x->chave)
-        return search(x->dir, chave);
-    else
-        return x;
+    if(x != nullptr) {
+        if(x->chave.find(chave) != std::string::npos)
+            x->pssoa->printPessoa();
+        x->esq->searchnome(x->esq,chave);
+        x->dir->searchnome(x->dir,chave);
+    }
 }
 template <typename Tchave>
 void node<Tchave>::searchnome(node *x, Tchave chave)

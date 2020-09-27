@@ -109,13 +109,7 @@ void tree<Tchave>::pesquisar(Tchave chave){
     if(raiz == nullptr){
         cout << "Arvore vazia..."<<endl;
     }else{
-        node<Tchave>* x = raiz->search(raiz, chave);
-        if(x != nullptr){
-            cout << x->getPessoa()<<endl;
-
-        }else{
-            cout << "Valor não existe na arvore..."<<endl;
-        }
+        raiz->search(raiz, chave);
     }
 }
 template <typename Tchave>
