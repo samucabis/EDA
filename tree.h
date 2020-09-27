@@ -19,7 +19,7 @@ public:
     tree();
     ~tree();
     int altura();
-    //int numeroFolhas();
+    int numeroFolhas();
     //void pre_ordem();
    // void em_ordem();
     //void pos_ordem();
@@ -32,6 +32,15 @@ public:
 
 };
 
+
+//retorna a quantidade de folhas
+template <typename Tchave>
+int tree<Tchave>::numeroFolhas() {
+    if(raiz == nullptr) {
+        return 0;
+    }
+    return raiz->numeroFolhas();
+}
 //iniciando a arvore como vazia
 template <typename Tchave>
 tree<Tchave>::tree() {
@@ -88,6 +97,8 @@ void tree<Tchave>::inserir(Tchave chave, pessoa &p) {
     } else {
         //chamada da função para inserir novos valores
         cout << "não raiz " << endl;
+        if(raiz->pssoa->nome == p.nome)
+            p.igualdade = true;
         raiz = raiz->insert(chave, p);
     }
 }
