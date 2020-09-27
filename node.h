@@ -31,6 +31,7 @@ public:
     node *min();
     node *max();
     node *search(node *x, Tchave chave);
+    void searchnome(node *x, Tchave chave);
     pessoa *pssoa;
 
 private:
@@ -340,6 +341,16 @@ node<Tchave> *node<Tchave>::search(node *x, Tchave chave)
         return search(x->dir, chave);
     else
         return x;
+}
+template <typename Tchave>
+void node<Tchave>::searchnome(node *x, Tchave chave)
+{   
+    if(x != nullptr) {
+        if(x->chave.find(chave) != std::string::npos)
+            x->pssoa->printPessoa();
+        x->esq->searchnome(x->esq,chave);
+        x->dir->searchnome(x->dir,chave);
+    }
 }
 
 // ########################################################################### END NODE #########################################

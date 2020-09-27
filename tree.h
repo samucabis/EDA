@@ -29,6 +29,7 @@ public:
     node<Tchave>* min();
     node<Tchave>* max();
     void pesquisar(Tchave chave);
+    void pesquisarnome(Tchave chave);
 
 };
 
@@ -115,6 +116,14 @@ void tree<Tchave>::pesquisar(Tchave chave){
         }else{
             cout << "Valor não existe na arvore..."<<endl;
         }
+    }
+}
+template <typename Tchave>
+void tree<Tchave>::pesquisarnome(Tchave chave){
+    if(raiz == nullptr){
+        cout << "Arvore vazia..."<<endl;
+    }else{
+         raiz->searchnome(raiz, chave);
     }
 }
 

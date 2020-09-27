@@ -26,8 +26,8 @@ int menu()
     cout << endl;
     cout << "1 - Gerar arvores" << endl;
     cout << "2 - Remover" << endl;
-    cout << "3 - Percurso pre-ordem" << endl;
-    cout << "4 - Percurso em-ordem" << endl;
+    cout << "3 - consultar por nome" << endl;
+    cout << "4 - consultar por nascimento" << endl;
     cout << "5 - Percurso pos-ordem" << endl;
     cout << "6 - Altura da arvore" << endl;
     cout << "7 - Numero de folhas da arvore" << endl;
@@ -77,13 +77,19 @@ void init(int op, tree<Tchave> *t, tree<Tchave> *t1, tree<Tchave> *t2,  bool *b,
     }
     case 3:
     {
-        // t->pre_ordem();
+        Tchave chave;
+        cout << "Digite uma Chave..." << endl;
+        cin >> chave;
+        t1->pesquisarnome(chave);
         limpaTela();
         break;
     }
     case 4:
     {
-        //t->em_ordem();
+        Tchave chave;
+        cout << "Digite uma Chave..." << endl;
+        cin >> chave;
+        t2->pesquisar(chave);
         limpaTela();
         break;
     }
